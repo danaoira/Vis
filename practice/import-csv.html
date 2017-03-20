@@ -2,12 +2,18 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
-		<title>SVG Example</title>
+		<title>D3 Page Template</title>
 		<script type="text/javascript" src="d3/d3.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 	</head>
 	<body>
 		<script type="text/javascript">
+			var eclipsedata;
+
+			d3.csv("data/solar.csv", function(data) {
+				eclipsedata = data;
+				console.log(eclipsedata);
+			});
 		</script>
 	</body>
 </html>
