@@ -43,7 +43,12 @@
 				.attr("height", function(d) {
 					return (d * 4);
 				})
-				.attr("fill", "lightgray");
+				.attr("fill", function(d) {
+					r = 255;
+					g = (d * 2) + 192;
+					b = (d * 2) + 203;
+					return "rgb(" + r + ", " + g + ", " + b + ")";
+				});
 		</script>
 	</body>
 </html>
