@@ -76,10 +76,17 @@
 						.data(dataset)
 						.attr("y", function(d) { return h - yScale(d); })
 						.attr("height", function(d) { return yScale(d); })
+						.attr("fill", function(d) {
+							r = 255;
+							g = (d * 2) + 192;
+							b = (d * 2) + 203;
+							return "rgb(" + r + ", " + g + ", " + b + ")";
+						});
 
 					svg.selectAll("text")
 						.data(dataset)
 						.text(function(d) { return d; })
+						.attr("x", function(d, i) { return xScale(i) + xScale.bandwidth() / 2; })
 						.attr("y", function(d) { return h - yScale(d) + 14; })
 				})
 		</script>
