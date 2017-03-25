@@ -67,7 +67,10 @@
 			// New data on click
 			d3.select("button")
 				.on("click", function() {
-					dataset = [ 11, 12, 15, 20, 18, 17, 16, 18, 23, 25, 5, 10, 13, 19, 21, 25, 22, 18, 15, 13 ];
+					dataset = [];
+					for (var i = 0; i < 20; i++) {
+						dataset.push(Math.round(Math.random() * 25))
+					}
 
 					svg.selectAll("rect")
 						.data(dataset)
