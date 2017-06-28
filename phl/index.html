@@ -10,16 +10,19 @@
 			fill: SteelBlue;
 			fill-opacity: 0.5;
 		}
+
 		.circle:hover {
 			fill: #808080;
 			fill-opacity: 0.75;
 			stroke: White;
 		}
+
 		.exo-graph {
 			margin: 25px auto;
 			background-color: "";
 			display: block;
 		}
+
 		.title {
 			font-size: 20px;
 		}
@@ -37,9 +40,11 @@
 			pointer-events: none;
 			color: #000;
 		}
+
 		.domain {
 			stroke: #c0c0c0;
 		}
+
 		.tick > line {
 			stroke: #c0c0c0;
 		}
@@ -49,11 +54,11 @@
 	<div class="container" style="width: 990px;">
 		<h1>Exoplanet Data Explorer</h1>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-xs-6">
 				<p>X-Axis</p>
 				<select id="x-menu"></select>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 col-xs-6">
 				<p>Y-Axis</p>
 				<select id="y-menu"></select>
 			</div>
@@ -109,16 +114,18 @@
 				.merge(selection)
 				.transition()
 				.duration(1000)
+				.attr("class", "circle")
 				.attr("cx", function(d) { return scale.x(d[xVal]) })
 				.attr("cy", function(d) { return scale.y(d[yVal]) })
 				.attr("r", 5)
-				.attr("id", function(d) { return d["P. Name"]} )
-				.attr("class", "circle");
+				.attr("id", function(d) { return d["P. Name"]} );
 
 			title.text(xVal + " vs. " + yVal);
+
 			axisX.transition()
 				.duration(1000)
 				.call(axes.x);
+				
 			axisY.transition()
 				.duration(1000)
 				.call(axes.y);
@@ -175,7 +182,7 @@
 			}
 		}
 
-		// append axes, title, svg ---------------------------------
+		// append axes, title, svg -----------------------------
 
 		var appendX = function(svg, axes) {
 			var drawnX = svg.append("g")
@@ -222,7 +229,7 @@
 
 		// column headers that were numeric values (excludes Booleans)
 		// did this by hand, but would have preferred to automate given more time
-		var numVals = ["P. Min Mass (EU)", "P. Mass (EU)", "P. Radius (EU)", "P. Density (EU)", "P. Gravity (EU)", "P. Esc Vel (EU)", "P. SFlux Min (EU)", "P. SFlux Mean (EU)", "P. SFlux Max (EU)", "P. Teq Min (K)", "P. Teq Mean (K)", "P. Teq Max (K)", "P. Ts Min (K)", "P. Ts Mean (K)", "P. Ts Max (K)", "P. Surf Press (EU)", "P. Mag", "P. Appar Size (deg)", "P. Period (days)", "P. Sem Major Axis (AU)", "P. Eccentricity", "P. Mean Distance (AU)", "P. Inclination (deg)", "P. Omega (deg)", "S. Mass (SU)", "S. Radius (SU)", "S. Teff (K)", "S. Luminosity (SU)", "S. Age (Gyrs)", "S. Distance (pc)", "S. RA (hrs)", "S. DEC (deg)", "S. Mag from Planet", "S. Size from Planet (deg)", "S. No. Planets", "S. No. Planets", "S. No. Planets HZ", "S. Hab Zone Min (AU)", "S. Hab Zone Max (AU)", "P. HZD", "P. HZC", "P. HZA", "P. HZI", "P. SPH", "P. ESI", "P. Disc. Year"];
+		var numVals = ["P. Min Mass (EU)", "P. Mass (EU)", "P. Radius (EU)", "P. Density (EU)", "P. Gravity (EU)", "P. Esc Vel (EU)", "P. SFlux Min (EU)", "P. SFlux Mean (EU)", "P. SFlux Max (EU)", "P. Teq Min (K)", "P. Teq Mean (K)", "P. Teq Max (K)", "P. Ts Min (K)", "P. Ts Mean (K)", "P. Ts Max (K)", "P. Surf Press (EU)", "P. Mag", "P. Appar Size (deg)", "P. Period (days)", "P. Sem Major Axis (AU)", "P. Eccentricity", "P. Mean Distance (AU)", "P. Inclination (deg)", "P. Omega (deg)", "S. Mass (SU)", "S. Radius (SU)", "S. Teff (K)", "S. Luminosity (SU)", "S. Age (Gyrs)", "S. Distance (pc)", "S. RA (hrs)", "S. DEC (deg)", "S. Mag from Planet", "S. Size from Planet (deg)", "S. No. Planets", "S. No. Planets HZ", "S. Hab Zone Min (AU)", "S. Hab Zone Max (AU)", "P. HZD", "P. HZC", "P. HZA", "P. HZI", "P. SPH", "P. ESI", "P. Disc. Year"];
 
 		// tooltip
 		var div = d3.select("body").append("div")
